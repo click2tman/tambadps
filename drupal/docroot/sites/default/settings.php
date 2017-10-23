@@ -244,12 +244,10 @@ $databases = array();
  *
  * Example:
  * @code
- *   $config_directories = array(
- *     CONFIG_SYNC_DIRECTORY => '/directory/outside/webroot',
- *   );
- * @endcode
  */
-$config_directories = array();
+    $config_directories = array(
+      CONFIG_SYNC_DIRECTORY => '/../config',
+    );
 
 /**
  * Settings:
@@ -534,7 +532,7 @@ if ($settings['hash_salt']) {
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-# $settings['file_public_path'] = 'sites/default/files';
+ $settings['file_public_path'] = 'sites/default/files';
 
 /**
  * Private file path:
@@ -549,7 +547,7 @@ if ($settings['hash_salt']) {
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-# $settings['file_private_path'] = '';
+ $settings['file_private_path'] = '../files-private';
 
 /**
  * Session write interval:
@@ -733,16 +731,18 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  *
  * For example:
  * @code
- * $settings['trusted_host_patterns'] = array(
- *   '^example\.com$',
- *   '^.+\.example\.com$',
- *   '^example\.org$',
- *   '^.+\.example\.org$',
- * );
  * @endcode
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
+
+  $settings['trusted_host_patterns'] = array(
+    '^dps.drupal\.local',
+    '^.+\.dps.drupal\.local',
+    '^drupal\.local$',
+    '^.+\.drupal\.local$',
+  );
+
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
